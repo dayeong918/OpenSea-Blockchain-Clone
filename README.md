@@ -1,9 +1,9 @@
 # OpenSea-Blockchain-Clone
 Next.js, Sanity.io, thirdweb, TailwindCSS, Vercel을 사용한 OpenSea BlockChain-Clone Web3.0 앱.
 
-💡 From Youtube Channel 'Clever Programmer', "https://www.youtube.com/watch?v=x3eRXeMB-4k" (2022.1.30 Posted).
+💡 From Youtube Channel 'Clever Programmer', "https://www.youtube.com/watch?v=x3eRXeMB-4k" (2022.1.30 Posted).  
 
-🗄️ Link to the assets : https://drive.google.com/drive/folders/1BS_tG_B7kH3pJVBu6KJiLgsk4T2gt9Jr
+🗄️ Link to the assets : https://drive.google.com/drive/folders/1BS_tG_B7kH3pJVBu6KJiLgsk4T2gt9Jr  
 🔗 Github Repo : https://github.com/CleverProgrammers/opensea-blockchain-youtube
 
 # 개발 순서
