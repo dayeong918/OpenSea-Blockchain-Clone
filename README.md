@@ -43,11 +43,8 @@ https://metamask.io/download.html.
 
 ![image](https://user-images.githubusercontent.com/62468132/163950821-243a40ae-4bc0-4d3e-9473-4eeaddbedc48.png)
 
-![image](https://user-images.githubusercontent.com/62468132/163952137-e394fb4d-1a74-47ef-809c-48449545ca7e.png)
-- thirdweb의 marketplace가 리뉴얼중으로 사용할 수 없는 상황이어서, 임의로 네트워크 주소를 ../?isListed=true과 같이 변경했을 때 모습.
-- Ethereum 값을 등록하지 못한 상황이어서 Metamask와 연결하여 구매하는 기능을 구현하지는 못했다.
-
-# 코드
-
+![image](https://user-images.githubusercontent.com/62468132/163961832-1f7d39e4-c269-4acd-9969-bf393c5b4ca0.png)
+- thirdweb의 marketplace가 리뉴얼중으로 사용할 수 없는 상황이어서, 임의로 네트워크 주소를 '/?isListed=true'로 변경.
+- Ethereum 값을 등록하지 못하여 Metamask와 연결하여 구매하지는 못함.
 
 
