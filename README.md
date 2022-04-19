@@ -17,10 +17,10 @@ Next.js, Sanity.io, thirdweb, TailwindCSS, Vercel을 사용한 OpenSea BlockChai
 - Vercel에서 앱을 배포하고 호스팅한다. 
 
 # 기술 스택 정리
-1. Next.js - React를 기반으로한 Framework
-2. tailwind.css - CSS Framework
+1. Next.js - React를 기반으로한 Framework.
+2. tailwind.css - CSS Framework.
 3. thirdweb - 스마트 계약, SDK와 UI 구성요소를 제공하는 포털사이트. 
-4. Sanity - 블로그, 쇼핑몰 등에서 사용하는 여러 컨텐츠를 다양한 built-in 기능들을 이용해 편리하게 관리할 수 있는 콘텐츠 관리시스템
+4. Sanity - 블로그, 쇼핑몰 등에서 사용하는 여러 컨텐츠를 다양한 built-in 기능들을 이용해 편리하게 관리할 수 있는 콘텐츠 관리시스템.
 5. Vercel - 정적 사이트 및 서버리스 기능을 위한 클라우드 플랫폼.
 
 # Installation
@@ -43,9 +43,11 @@ https://metamask.io/download.html.
 
 ![image](https://user-images.githubusercontent.com/62468132/163950821-243a40ae-4bc0-4d3e-9473-4eeaddbedc48.png)
 
-![image](https://user-images.githubusercontent.com/62468132/163951021-2e1024fe-0499-4649-8be8-073867789f13.png)
-
+![image](https://user-images.githubusercontent.com/62468132/163952137-e394fb4d-1a74-47ef-809c-48449545ca7e.png)
+- thirdweb의 marketplace가 리뉴얼중으로 사용할 수 없는 상황이어서, 임의로 네트워크 주소를 ../?isListed=true과 같이 변경했을 때 모습.
+- Ethereum 값을 등록하지 못한 상황이어서 Metamask와 연결하여 구매하는 기능을 구현하지는 못했다.
 
 # 코드
+
 
 
