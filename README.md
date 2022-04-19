@@ -31,19 +31,19 @@ https://github.com/dayeong918/CryptoCoders/edit/master/README.md.
 npm install -g @sanity/cli && sanity init
 ```
 
-2) Metamask.  
+2) Metamask. 
 - Install Metamask for Chrome.  
 https://metamask.io/download.html. 
 
 # 개발 화면
 
-![image](https://user-images.githubusercontent.com/62468132/163949901-c064bca7-909e-485b-a1b2-bef4cc822687.png). 
+![image](https://user-images.githubusercontent.com/62468132/163949901-c064bca7-909e-485b-a1b2-bef4cc822687.png)
 
-![image](https://user-images.githubusercontent.com/62468132/163950318-767f9095-a0. 
+![image](https://user-images.githubusercontent.com/62468132/163951492-d834c7d9-e1d5-4df5-a178-64617543d425.png)
 
-![image](https://user-images.githubusercontent.com/62468132/163950821-243a40ae-4bc0-4d3e-9473-4eeaddbedc48.png). 
+![image](https://user-images.githubusercontent.com/62468132/163950821-243a40ae-4bc0-4d3e-9473-4eeaddbedc48.png)
 
-![image](https://user-images.githubusercontent.com/62468132/163951021-2e1024fe-0499-4649-8be8-073867789f13.png). 
+![image](https://user-images.githubusercontent.com/62468132/163951021-2e1024fe-0499-4649-8be8-073867789f13.png)
 
 
 # 코드
