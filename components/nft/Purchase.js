@@ -1,4 +1,5 @@
-import { useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
+
 import { HiTag } from 'react-icons/hi'
 import { IoMdWallet } from 'react-icons/io'
 import toast, { Toaster } from 'react-hot-toast'
@@ -9,45 +10,49 @@ const style = {
   buttonText: `ml-2 text-lg font-semibold`,
 }
 
-const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule}) => {
-    const [selectedMarketNft, setSelectedMarketNft] = useState()
-    const [enableButton, setEnableButton ] = useState(false)
+const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
+  const [selectedMarketNft, setSelectedMarketNft] = useState()
+  const [enableButton, setEnableButton] = useState(false)
 
-    useEffect (()=> {
-        if (!listings || isListed == 'false') return
-        ;(async() => {
-            setSelectedMarketNft(
-                listings.find(marketNft => marketNft.nft?.id == selectedNft.id),
-            )
-        })()
-    }, [selectedNft, listings, isListed])
+  useEffect(() => {
+    if (!listings || isListed === 'false') return  
+    ;(async () => {
+      setSelectedMarketNft(
+        listings.find((marketNft) => marketNft.asset?.id === selectedNft.id)
+      )    
+    })()
+  }, [selectedNft, listings, isListed])
 
-    useEffect(()=> {
-        if (!selectedMarketNft || !selectedNft ) return
-        setEnableButton(true)
-    }, [selectedMarketNft, selectedNft]) 
+  useEffect(() => {
+    if (!selectedMarketNft || !selectedNft) return
 
-    const confirmPurchase = (toastHandler = toast) => 
-        toastHandler.success(`Purchase successful!`, {
-            style: {
-                background:'#04111d',
-                color:'#fff',
-            },
-        }) 
+    setEnableButton(true)
+  }, [selectedMarketNft, selectedNft])
 
-    const buyItem = async(
-        listingId = selectedMarketNft.id,
-        quantityDesired = 1,
-        module = marketPlaceModule
-    ) => {
-        await module.buyoutDirectListing({listingId, quantityDesired})
-        confirmPurchase()
-    }
+  const confirmPurchase = (toastHandler = toast) =>
+    toastHandler.success(`Purchase successful!`, {
+      style: {
+        background: '#04111d',
+        color: '#fff',  
+      },
+    })   
 
-  return (
-    <div className="flex h-20 w-full items-center rounded-lg border border-[#151c22] bg-[#303339] px-12">
-      <Toaster position="bottom-left" reverseOrder={false} />
-      {isListed === 'true' ? (
+  const buyItem = async (
+    listingId = selectedMarketNft.id,
+    quantityDesired = 1,
+    module = marketPlaceModule
+  ) => {  
+    // in [nftId.js] 
+    await module.buyoutDirectListing({ listingId : listingId, quantityDesired:quantityDesired})
+    .catch((error)=> console.error(error))
+    
+    confirmPurchase()
+  }
+
+  return (  
+    <div className="bg-[#303339] flex h-20 w-full items-center rounded-lg border border-[#151c22] bg-[#303339] px-12">
+      <Toaster position="top-center" reverseOrder={false} />
+      {isListed === 'true' ? (    
         <>
           <div
             onClick={() => {
@@ -57,9 +62,9 @@ const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule}) => {
           >
             <IoMdWallet className={style.buttonIcon} />
             <div className={style.buttonText}>Buy Now</div>
-          </div>
+          </div> 
           <div
-            className={`${style.button} border border-[#151c22]  bg-[#363840] hover:bg-[#4c505c]`}
+            className={`${style.button} border border-[#151c22] b-[#363840] hover:bg-[#4c505c]`}
           >
             <HiTag className={style.buttonIcon} />
             <div className={style.buttonText}>Make Offer</div>
@@ -71,8 +76,8 @@ const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule}) => {
           <div className={style.buttonText}>List Item</div>
         </div>
       )}
-    </div>
+    </div> 
   )
 }
-
+  
 export default MakeOffer

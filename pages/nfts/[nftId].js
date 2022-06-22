@@ -1,7 +1,7 @@
 import Header from '../../components/Header'
 import { useEffect, useMemo, useState } from 'react'
 import { useWeb3 } from '@3rdweb/hooks'
-import { MarketplaceModule, ThirdwebSDK } from '@3rdweb/sdk'
+import { ThirdwebSDK } from '@3rdweb/sdk'
 import { useRouter } from 'next/router'
 import NFTImage from '../../components/nft/NFTImage'
 import GeneralDetails from '../../components/nft/GeneralDetails'
@@ -16,77 +16,78 @@ const style = {
   detailsContainer: `flex-[2] ml-4`,
 }
 
-const NFT = () => {
-    const { provider } = useWeb3()
-    const [ selectedNft, setSelectedNft] = useState()
-    const [ listings, setListings] = useState([])
-    const router = useRouter()
+const Nft = () => {
+  const { provider } = useWeb3()
+  const [selectedNft, setSelectedNft] = useState()
+  const [listings, setListings] = useState([])
+  const router = useRouter()
 
-    const nftModule = useMemo(()=> {
-        if (!provider) return
+  const nftModule = useMemo(() => { 
+    if (!provider) return
 
-        const sdk = new ThirdwebSDK(
-            provider.getSigner(),
-            'https://eth-rinkeby.alchemyapi.io/v2/SoYkh8YFpytHS88d_vfCX5lZA0Smfs8E'
-        )
-        return sdk.getNFTModule('0xF0Ba4fB3F34a02023015450E725663bDE55eBa71')
-    }, [provider])
+    const sdk = new ThirdwebSDK(
+      provider.getSigner(),
+      'https://eth-rinkeby.alchemyapi.io/v2/SoYkh8YFpytHS88d_vfCX5lZA0Smfs8E'
+    )
+    return sdk.getNFTModule('0xF0Ba4fB3F34a02023015450E725663bDE55eBa71')
+  }, [provider])
 
-    // get all NFTs in the collection
-    useEffect(() => {
-        if (!nftModule) return
-        ;(async () => {
-            const nfts = await nftModule.getAll()
+  // get all NFTs in the collection
+  useEffect(() => {
+    if (!nftModule) return
+    ;(async () => {
+      const nfts = await nftModule.getAll()
 
-            const selectedNftItem = nfts.find(
-                (nft) => nft.id == router.query.nftId)
-            setSelectedNft(selectedNftItem)
-        })()
-    }, [nftModule])
+      const selectedNftItem = nfts.find((nft) => nft.id === router.query.nftId)
 
-    // const marketPlaceModule = useMemo(()=> {
-    //     if (!provider) return
-        
-    //     const sdk = new ThirdwebSDK(
-    //         provider.getSigner(),
-    //         'https://eth-rinkeby.alchemyapi.io/v2/SoYkh8YFpytHS88d_vfCX5lZA0Smfs8E'
-    //     )
-    //     return sdk.getMarketplaceModule(
-    //         'none'
-    //     )
-    // }, [provider])
+      setSelectedNft(selectedNftItem)
+    })()
+  }, [nftModule])
 
-    // useEffect(()=> {
-    //     if (!MarketplaceModule) return
-    //     ;(async()=> {
-    //         setListings(await marketplaceModule.getAllListings())
-    //     })()
-    // }, [marketplaceModule])
+  const marketPlaceModule = useMemo(() => {
+    if (!provider) return
 
-    return (
-        <div>
-            <Header />
-            <div className={style.wrapper}>
-                <div className={style.container}>
-                    <div className={style.topContent}>
-                        <div className={style.nftImgContainer}>
-                            <NFTImage selectedNft={selectedNft}/>
-                        </div>
-                        <div className={style.detailsContainer}>
-                            <GeneralDetails selectedNft = {selectedNft} />
-                            <Purchase
-                                isListed = {router.query.isListed}
-                                selectedNft = {selectedNft}
-                                listings={listings}
-                                MarketplaceModule = {MarketplaceModule}
-                            />
-                        </div>
-                    </div>
-                    <ItemActivity />
-                </div>
+    const sdk = new ThirdwebSDK(
+      provider.getSigner(),
+      'https://eth-rinkeby.alchemyapi.io/v2/SoYkh8YFpytHS88d_vfCX5lZA0Smfs8E'
+    )
+
+    return sdk.getMarketplaceModule(
+      '0x4F9ab9Ea62BC29b47bb1454E8CD8ac5261a46c8f'
+    )
+  }, [provider])
+
+  useEffect(() => {
+    if (!marketPlaceModule) return
+    ;(async () => {
+      setListings(await marketPlaceModule.getAllListings())
+    })()
+  }, [marketPlaceModule])
+
+  return (
+    <div>
+      <Header />
+      <div className={style.wrapper}>
+        <div className={style.container}>
+          <div className={style.topContent}>
+            <div className={style.nftImgContainer}>
+              <NFTImage selectedNft={selectedNft} />
             </div>
+            <div className={style.detailsContainer}>
+              <GeneralDetails selectedNft={selectedNft} />
+              <Purchase
+                isListed={router.query.isListed}
+                selectedNft={selectedNft}
+                listings={listings}
+                marketPlaceModule={marketPlaceModule}
+              />
+            </div>
+          </div>
+          <ItemActivity />
         </div>
-    )}
+      </div>
+    </div>
+  )
+}
 
-// selectedNft = {selectedNft}
-export default NFT
+export default Nft
